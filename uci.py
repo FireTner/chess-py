@@ -5,6 +5,7 @@ from search import find_best_move
 board = chess.Board()
 
 def handle_message(message):
+  split_message = message.split(" ")
   if message == "uci":
     print("id name tner-py")
     print("id author firetner")
@@ -14,16 +15,20 @@ def handle_message(message):
   elif "ucinewgame" in message:
     pass
   elif "position startpos moves" in message:
-    moves = message.split(" ")[3:]
+    moves = split_message[3:]
     board.clear()
     board.set_fen(chess.STARTING_BOARD_FEN)
     for move in moves:
       board.push_uci(move)
   elif "position fen" in message:
-    fen = " ".join(message.split(" ")[2:])
+    fen = " ".join(split_message[2:])
     board.set_fen(fen)
-  elif "go" in message:
-    move = find_best_move(board)
+  elif split_message[0] == "go":
+    assert split_message[1] == "wtime"
+    wtime = int(split_message[2])
+    assert split_message[3] == "btime"
+    btime = int(split_message[4])
+    move = find_best_move(board, wtime if board.turn else btime)
     print(f"bestmove {move}")
   elif message == "quit":
     sys.exit(0)
