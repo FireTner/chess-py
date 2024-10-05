@@ -30,10 +30,10 @@ def handle_message(message):
     assert split_message[3] == "btime"
     btime = int(split_message[4])
     assert split_message[5] == "winc"
-    btime = int(split_message[6])
+    winc = int(split_message[6])
     assert split_message[7] == "binc"
-    btime = int(split_message[8])
-    move = find_best_move(board, calc_tte if board.turn else btime)
+    binc = int(split_message[8])
+    move = find_best_move(board, calc_tte(wtime, winc) if board.turn else calc_tte(btime, binc))
     print(f"bestmove {move}")
   elif message == "quit":
     sys.exit(0)
