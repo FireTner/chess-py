@@ -1,0 +1,2 @@
+INT_MAX = 1 << 16
+INT_MIN = -INT_MAX
