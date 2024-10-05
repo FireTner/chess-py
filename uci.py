@@ -1,6 +1,7 @@
 import chess
 import sys
 from search import find_best_move
+from time_mgmt import calc_tte
 
 board = chess.Board()
 
@@ -28,7 +29,11 @@ def handle_message(message):
     wtime = int(split_message[2])
     assert split_message[3] == "btime"
     btime = int(split_message[4])
-    move = find_best_move(board, wtime if board.turn else btime)
+    assert split_message[5] == "winc"
+    btime = int(split_message[6])
+    assert split_message[7] == "binc"
+    btime = int(split_message[8])
+    move = find_best_move(board, calc_tte if board.turn else btime)
     print(f"bestmove {move}")
   elif message == "quit":
     sys.exit(0)

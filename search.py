@@ -25,8 +25,7 @@ def search(board: chess.Board, depth: int = 0, time_to_end: int = INT_MAX):
   return best_score
 
 # Find the best move given a current board position
-def find_best_move(board: chess.Board, remaining_time: int) -> str:
-  time_to_end = calc_tte(remaining_time)
+def find_best_move(board: chess.Board, time_to_end: int) -> str:
   best_score = INT_MIN
   best_move = chess.Move.null
 
