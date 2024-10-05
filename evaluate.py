@@ -160,6 +160,7 @@ eg_king_table = [n + mg_value[chess.KING] for n in eg_king_table]
 # first 0 is offset because pawn = 1
 gamephase_inc = [ 0,0,1,1,2,4,0 ]
 
+# Evaluate board position relative to player's turn
 def evaluate(board: chess.Board):
   if board.outcome():
     if   board.outcome().winner == chess.BLACK: return INT_MIN
@@ -216,4 +217,4 @@ def evaluate(board: chess.Board):
 
   # / 24 because the scale is 0 to 24 instead of 0 to 1
   score = (mg_score + eg_score) / 24
-  return score
+  return score if board.turn == chess.WHITE else -score
