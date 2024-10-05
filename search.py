@@ -3,7 +3,7 @@ import evaluate
 from helper import INT_MIN, INT_MAX
 
 def search(board: chess.Board, depth = 0):
-  if depth == 0 or board.is_game_over:
+  if depth == 0 or board.is_game_over():
     return evaluate.evaluate(board)
   
   best_score = INT_MIN
