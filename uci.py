@@ -6,7 +6,9 @@ board = chess.Board()
 
 def handle_message(message):
   if message == "uci":
-    pass
+    print("id name tner-py")
+    print("id author firetner")
+    print("uciok")
   elif message == "isready":
     print("readyok")
   elif "ucinewgame" in message:
