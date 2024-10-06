@@ -19,7 +19,7 @@ def main():
       logging.info(f"> {message}")
       uci.handle_message(message)
   except Exception as e:
-    logging.error(f"error {repr(e)}; ", exc_info=True,stack_info=True)
+    logging.error(f"error {repr(e)}; ", exc_info=True, stack_info=True)
 
 
 if __name__ == "__main__":
