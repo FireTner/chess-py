@@ -20,12 +20,16 @@ def handle_message(message):
     logging.debug("ucinewgame decoded")
     pass
   elif "position startpos moves" in message:
-    logging.debug("position startpos decoded")
+    logging.debug("position startpos moves decoded")
     moves = split_message[3:]
     board.clear()
     board.set_fen(chess.STARTING_FEN)
     for move in moves:
       board.push_uci(move)
+  elif "position startpos" == message:
+    logging.debug("position startpos decoded")
+    board.clear()
+    board.set_fen(chess.STARTING_FEN)
   elif "position fen" in message:
     logging.debug("position fen decoded")
     
