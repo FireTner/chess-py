@@ -11,7 +11,7 @@ def handle_message(message):
     print("id name tner-py")
     print("id author firetner")
     print("uciok")
-  elif message == "isready":
+  elif "isready" in message:
     print("readyok")
   elif "ucinewgame" in message:
     pass
