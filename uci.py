@@ -12,10 +12,10 @@ def handle_message(message):
     logging.debug("uci decoded")
     print("id name tner-py")
     print("id author firetner")
-    print("uciok")
+    print("uciok", flush=True)
   elif "isready" in message:
     logging.debug("isready decoded")
-    print("readyok")
+    print("readyok", flush=True)
   elif "ucinewgame" in message:
     logging.debug("ucinewgame decoded")
     pass
@@ -69,7 +69,7 @@ def handle_message(message):
     binc = arguments["binc"]
 
     move = find_best_move(board, calc_tte(wtime, winc) if board.turn else calc_tte(btime, binc))
-    print(f"bestmove {move}")
+    print(f"bestmove {move}", flush=True)
   elif message == "quit":
     logging.debug("quit decoded")
     sys.exit(0)
