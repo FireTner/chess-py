@@ -18,7 +18,7 @@ def handle_message(message):
   elif "position startpos moves" in message:
     moves = split_message[3:]
     board.clear()
-    board.set_fen(chess.STARTING_BOARD_FEN)
+    board.set_fen(chess.STARTING_FEN)
     for move in moves:
       board.push_uci(move)
   elif "position fen" in message:
