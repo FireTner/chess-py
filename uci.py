@@ -28,8 +28,22 @@ def handle_message(message):
       board.push_uci(move)
   elif "position fen" in message:
     logging.debug("position fen decoded")
-    fen = " ".join(split_message[2:])
+    
+    moves = []
+    has_moves = "moves" in split_message
+    moves_start = -1
+    if has_moves:
+      moves_start = split_message.index("moves")
+      moves = split_message[moves_start + 1:]
+    
+    fen = " ".join(split_message[2:moves_start])
+    
+    logging.debug(f"FEN: {fen}")
+    logging.debug(f"MOVES: {moves}")
+    
     board.set_fen(fen)
+    for move in moves:
+      board.push_uci(move)
   elif split_message[0] == "go":
     logging.debug("go decoded")
     arguments = {
