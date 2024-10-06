@@ -1,7 +1,7 @@
 import chess
 import evaluate
 from helper import INT_MIN, INT_MAX
-from time_mgmt import check_time, calc_tte
+from time_mgmt import check_time
 
 def search(board: chess.Board, depth: int = 0, time_to_end: int = INT_MAX):
   if depth == 0 or board.is_game_over():
