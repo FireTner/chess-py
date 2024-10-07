@@ -1,4 +1,5 @@
 import chess
+import time
 import sys
 from search import find_best_move
 from time_mgmt import calc_tte
@@ -72,7 +73,10 @@ def handle_message(message):
     winc = arguments["winc"]
     binc = arguments["binc"]
 
+    time_start = time.time_ns()
     move = find_best_move(board, calc_tte(wtime, winc) if board.turn else calc_tte(btime, binc))
+    time_spent = time.time_ns() - time_start
+    logging.info(f"found the bestmove in {time_spent / 1000} ms")
     print(f"bestmove {move}", flush=True)
   elif message == "quit":
     logging.debug("quit decoded")
