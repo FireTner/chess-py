@@ -18,7 +18,7 @@ def search(board: chess.Board, depth: int = 0, time_to_end: int = INT_MAX):
     board.push(move)
 
     score = -search(board, depth - 1, time_to_end)
-    if score > best_score:
+    if score >= best_score:
       best_score = score
     
     if check_time(time_to_end):
@@ -34,14 +34,14 @@ def find_best_move(board: chess.Board, time_to_end: int) -> str:
   global nodes_searched
   nodes_searched = 0
   best_score = INT_MIN
-  best_move = chess.Move.null
+  best_move = chess.Move.null()
 
   for move in board.legal_moves:
     nodes_searched += 1
     board.push(move)
 
     score = -search(board, 2, time_to_end)
-    if score > best_score:
+    if score >= best_score:
       best_score = score
       best_move = move
 
