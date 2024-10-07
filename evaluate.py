@@ -158,7 +158,7 @@ eg_king_table = [n + mg_value[chess.KING] for n in eg_king_table]
 
 
 # first 0 is offset because pawn = 1
-gamephase_inc = [ 0,0,1,1,2,4,0 ]
+gamephase_inc = [ 0, 0, 1, 1, 2, 4, 0 ]
 
 # Evaluate board position relative to player's turn
 def evaluate(board: chess.Board):
