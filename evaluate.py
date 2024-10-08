@@ -133,8 +133,23 @@ eg_king_table = [
 ]
 
 # piece's material values
-mg_value = [ 0, 82, 337, 365, 477, 1025,  0 ]
-eg_value = [ 0, 94, 281, 297, 512,  936,  0 ]
+mg_value = {
+  chess.PAWN: 82,
+  chess.KNIGHT: 337,
+  chess.BISHOP: 365,
+  chess.ROOK: 477,
+  chess.QUEEN: 1025,
+  chess.KING: 24000,
+}
+
+eg_value = {
+  chess.PAWN: 94,
+  chess.KNIGHT: 281,
+  chess.BISHOP: 297,
+  chess.ROOK: 512,
+  chess.QUEEN: 936,
+  chess.KING: 24000,
+}
 
 # add the piece's material to their positional value
 mg_pawn_table = [n + mg_value[chess.PAWN] for n in mg_pawn_table]
