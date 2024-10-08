@@ -1,7 +1,8 @@
 import chess
 import time
 import sys
-from search import find_best_move
+from search import find_best_move, nodes_searched
+from helper import INT_MAX
 from time_mgmt import calc_tte
 import logging
 
@@ -52,8 +53,8 @@ def handle_message(message):
   elif split_message[0] == "go":
     logging.debug("go decoded")
     arguments = {
-      "wtime": 0,
-      "btime": 0,
+      "wtime": INT_MAX,
+      "btime": INT_MAX,
       "winc": 0,
       "binc": 0,
     }
