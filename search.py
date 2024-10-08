@@ -9,7 +9,7 @@ nodes_searched = 0
 def search(board: chess.Board, depth: int = 0, time_to_end: int = INT_MAX):
   global nodes_searched
   nodes_searched += 1
-  if depth == 0 or board.is_game_over():
+  if depth == 0 or board.is_game_over() or board.is_repetition():
     return evaluate.evaluate(board)
   
   best_score = INT_MIN
@@ -47,7 +47,7 @@ def find_best_move(board: chess.Board, time_to_end: int) -> str:
 
     if check_time(time_to_end):
       board.pop()
-      return best_move.uci()
+      return best_move.uci(), best_score
 
     board.pop()
   

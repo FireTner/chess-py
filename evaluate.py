@@ -181,11 +181,12 @@ gamephase_inc = {
 
 # Evaluate board position relative to player's turn
 def evaluate(board: chess.Board):
-  if board.outcome():
-    if   board.outcome().winner == chess.BLACK: return INT_MIN
-    elif board.outcome().winner == chess.WHITE: return INT_MAX
-    elif board.is_stalemate(): return 0
-    else: return 0
+  outcome = board.outcome()
+  if outcome:
+    if   outcome.winner == chess.BLACK: return INT_MIN
+    elif outcome.winner == chess.WHITE: return INT_MAX
+  elif board.is_repetition():
+    return 0
 
   mg_score = 0
   eg_score = 0
