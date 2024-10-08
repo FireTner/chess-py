@@ -3,8 +3,7 @@ import chess
 # PeSTO's evaluation function
 # taken straight from https://www.chessprogramming.org/PeSTO%27s_Evaluation_Function
 
-INT_MAX = 1 << 31
-INT_MIN = -INT_MAX
+from helper import INT_MIN, INT_MAX
 
 # piece's positional values
 mg_pawn_table = [
