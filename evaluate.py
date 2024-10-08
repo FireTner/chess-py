@@ -183,8 +183,8 @@ gamephase_inc = {
 def evaluate(board: chess.Board):
   outcome = board.outcome()
   if outcome:
-    if   outcome.winner == chess.BLACK: return INT_MIN
-    elif outcome.winner == chess.WHITE: return INT_MAX
+    if   outcome.winner == board.turn: return INT_MAX
+    elif outcome.winner == (not board.turn): return INT_MIN
   elif board.is_repetition():
     return 0
 
