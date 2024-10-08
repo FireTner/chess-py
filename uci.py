@@ -74,9 +74,10 @@ def handle_message(message):
     binc = arguments["binc"]
 
     time_start = time.time_ns()
-    move = find_best_move(board, calc_tte(wtime, winc) if board.turn else calc_tte(btime, binc))
+    move, score = find_best_move(board, calc_tte(wtime, winc) if board.turn else calc_tte(btime, binc))
     time_spent = time.time_ns() - time_start
     logging.info(f"found the bestmove in {time_spent / 1000} ms")
+    print(f"info depth 2 score cp {int(score)} time {time_spent} nodes {nodes_searched} nps 0")
     print(f"bestmove {move}", flush=True)
   elif message == "quit":
     logging.debug("quit decoded")

@@ -53,4 +53,4 @@ def find_best_move(board: chess.Board, time_to_end: int) -> str:
   
   logging.info(f"searched {nodes_searched} nodes")  
 
-  return best_move.uci()
+  return best_move.uci(), best_score
